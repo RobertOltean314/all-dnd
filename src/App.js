@@ -1,17 +1,18 @@
+import React from "react";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Homepage from "./pages/Homepage";
+import DungeonMasterPage from "./components/dungeonMasterPage/DungeonMasterPage";
+import PlayerPage from "./components/playerPage/PlayerPage"; // Import PlayerPage component
+
 function App() {
   return (
-    <section id="homepage">
-      <h1 id="homepage__label">
-        Welcome to All Dnd, Dungeon Master --Username--
-      </h1>
-      <div id="homepage__listOfCampaigns">
-        <a href="pages/createNewCampaign.html">
-          <article id="listOfCampaigns__createNewCampaign">
-            <button id="createNewCampaign__button">Create new Campaign</button>
-          </article>
-        </a>
-      </div>
-    </section>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Homepage />} />
+        <Route path="/dungeon-master-page" element={<DungeonMasterPage />} />
+        <Route path="/player-page" element={<PlayerPage />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
