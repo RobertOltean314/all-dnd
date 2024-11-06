@@ -1,24 +1,17 @@
-import logo from './logo.svg';
-import './App.css';
-
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
+    <section id="homepage">
+      <h1 id="homepage__label">
+        Welcome to All Dnd, Dungeon Master --Username--
+      </h1>
+      <div id="homepage__listOfCampaigns">
+        <a href="pages/createNewCampaign.html">
+          <article id="listOfCampaigns__createNewCampaign">
+            <button id="createNewCampaign__button">Create new Campaign</button>
+          </article>
         </a>
-      </header>
-    </div>
+      </div>
+    </section>
   );
 }
 

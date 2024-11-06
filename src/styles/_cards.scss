@@ -1,0 +1,28 @@
+// _cards.scss
+
+#listOfCampaigns__campaignCard {
+    background-color: $card-bg;
+    box-shadow: $card-shadow;
+    border-radius: $border-radius;
+    padding: $padding;
+    width: 250px;
+    transition: transform 0.2s;
+    text-decoration: none;
+    color: $primary-bg;
+
+    &:hover {
+        transform: translateY(-5px);
+    }
+
+    h1 {
+        font-size: 1.5em;
+        margin: 0;
+        text-decoration: none;
+    }
+
+    h2 {
+        font-size: 1.2em;
+        color: #666;
+        margin: 5px 0 0 0;
+    }
+}

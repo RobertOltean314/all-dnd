@@ -1,0 +1,122 @@
+// Define color variables
+$navbar-bg: #4e3b28; // Dark brown for navbar background
+$navbar-item-bg-hover: #6f5c43; // Lighter brown for hover effect
+$text-color: #fff; // White text color for contrast
+$main-bg: #f4f1e6; // Light beige for the main area background
+$form-bg: #eae4d3; // Light brown for form background
+$button-bg: #7d6a57; // Button color
+$button-hover-bg: darken($button-bg, 10%); // Darker button on hover
+$border-radius: 5px; // Rounded corners
+
+#campaignNav {
+    width: 200px;
+    background-color: $navbar-bg;
+    color: $text-color;
+    height: 100vh;
+    padding-top: 20px;
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column; // Stacks items vertically
+
+    #campaignNav__list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        flex-grow: 1; // Allows list to grow and fill available space
+
+        #disabled {
+            pointer-events: none;
+            color: gray;
+            text-decoration: none;
+            cursor: not-allowed;
+            opacity: 0.6;
+        }
+    }
+
+    #campaignNav__item {
+        padding: 15px 20px;
+        cursor: pointer;
+        transition: background-color 0.3s;
+
+        &:hover {
+            background-color: $navbar-item-bg-hover; // Hover effect on item
+        }
+
+        a {
+            color: $text-color;
+            text-decoration: none;
+            display: block;
+            width: 100%; // Makes the link fill the entire item
+
+            &:hover {
+                background-color: $navbar-item-bg-hover; // Hover effect on link
+            }
+        }
+    }
+}
+
+#mainPage {
+    margin-left: 200px; // Ensure consistent margin
+    padding: 20px;
+    background-color: $main-bg; // Light beige background
+    height: 100vh; // Full viewport height
+    overflow-y: auto; // Enable vertical scrolling if needed
+    border-left: 2px solid $navbar-bg; // Optional left border for separation
+
+    #dashboard {
+        h1 {
+            font-size: 2em;
+            margin-bottom: 20px;
+            color: $navbar-bg; // Dark brown for the title
+            text-align: center; // Center the title
+        }
+
+        button {
+            background-color: $button-bg; // Button background
+            color: white; // White text for buttons
+            border: none;
+            padding: 10px 15px;
+            border-radius: $border-radius;
+            cursor: pointer;
+            transition: background-color 0.3s;
+
+            &:hover {
+                background-color: $button-hover-bg; // Darken button on hover
+            }
+        }
+
+        // General styles for forms and buttons
+        form {
+            background-color: $form-bg; // Light brown form background
+            padding: 20px;
+            border-radius: $border-radius;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); // Subtle shadow for depth
+
+            label {
+                display: block;
+                margin-bottom: 5px;
+                font-weight: bold;
+                color: $navbar-bg; // Dark brown for labels
+            }
+
+            input[type="text"],
+            input[type="number"],
+            textarea {
+                width: 100%;
+                padding: 10px;
+                margin-bottom: 15px;
+                border: 1px solid #ccc; // Light border for inputs
+                border-radius: $border-radius;
+                box-sizing: border-box; // Include padding in width
+
+                &:focus {
+                    border-color: $navbar-bg; // Highlight border on focus
+                    outline: none; // Remove default outline
+                }
+            }
+        }
+    }
+}
