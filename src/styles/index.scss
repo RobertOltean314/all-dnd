@@ -1,63 +1,59 @@
 // main.scss
 
 @import 'variables';
-@import 'buttons';
-@import 'cards';
-@import 'createNewCampaign';
 @import 'campaignPage';
+@import 'dungeonMasterPage';
+@import 'createNewCampaign';
+
+
 
 body {
-    font-family: Arial, sans-serif;
     background-color: $primary-bg;
-    margin: 0;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+    color: $text-color;
+    font-family: 'Cinzel', serif; // Medieval style font
 
     #homepage {
-        text-align: center;
-        background-color: #FFDAB9;
-        border-radius: $border-radius;
-        height: 600px; 
-        max-height: 600px; 
-        overflow-y: auto;
+        /*in this section will be displayed 2 components: 
+        Homepage Header and Homepage Body */
+        background-color: $primary-bg;
+        border: 2px solid $accent-color;
         padding: 20px;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
 
-        #homepage__label {
+        #homepage__header {
             font-size: 2em;
+            text-align: center;
             margin-bottom: 20px;
+            border-bottom: 2px solid $accent-color;
+            padding-bottom: 10px;
         }
 
-        #homepage__listOfCampaigns {
-            background-color: $list-bg;
-            box-shadow: $list-shadow;
-            border-radius: $border-radius;
-            padding: 40px;
-        }
+        #homepage__body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
 
-        #homepage__container {
-            text-align: center;
-            background-color: #FFDAB9;
-            border-radius: $border-radius;
-            padding: 20px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-        }
+            #homepage__body__header {
+                font-size: 1.5em;
+                margin-bottom: 20px;
+            }
 
-        #createNewCampaign__button {
-            background-color: $button-bg;
-            border: none;
-            border-radius: $border-radius;
-            color: white;
-            padding: 10px 20px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 16px;
-            margin: 10px 2px;
-            cursor: pointer;
+            #dungeonMasterButton, #playerButton {
+                background-color: $accent-color;
+                color: $primary-bg;
+                padding: 10px 20px;
+                border: none;
+                border-radius: 5px;
+                font-size: 1.2em;
+                cursor: pointer;
+                transition: background-color 0.3s;
+                margin: 10px;
+
+                &:hover {
+                    background-color: darken($accent-color, 10%);
+                }
+            }
         }
     }
 }
+

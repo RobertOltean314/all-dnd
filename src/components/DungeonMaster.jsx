@@ -8,12 +8,14 @@ function DungeonMaster() {
   );
 
   return (
-    <div id="homepage__container">
+    <div id="dungeonMasterPage">
       {!isCreateNewCampaignRoute && (
         <>
-          <h1 id="homepage__label">Welcome to All Dnd, Dungeon Master</h1>
-          <Link to="create-new-campaign">
-            <button id="createNewCampaign__button">Create new Campaign</button>
+          <h1 id="dungeonMasterPage__header">
+            Welcome to All Dnd, Dungeon Master
+          </h1>
+          <Link to="/">
+            <button id="homepageButton">Back to Main Menu</button>
           </Link>
           <CampaignComponentList />
         </>

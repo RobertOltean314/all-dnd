@@ -2,13 +2,13 @@ import { Link } from "react-router-dom";
 
 function HomepageBody() {
   return (
-    <div>
-      <h1>What do you want to be?</h1>
+    <div id="homepage__body">
+      <h1 id="homepage__body__header">What do you want to be?</h1>
       <Link to="/dungeon-master-page">
-        <button>Dungeon Master</button>
+        <button id="dungeonMasterButton">Dungeon Master</button>
       </Link>
       <Link to="/player-page">
-        <button>Player</button>
+        <button id="playerButton">Player</button>
       </Link>
     </div>
   );

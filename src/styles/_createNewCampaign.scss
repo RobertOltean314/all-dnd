@@ -1,64 +1,59 @@
 #createCampaign {
-    background-color: $list-bg;
-    box-shadow: $list-shadow;
+    background-color: $primary-bg;
+    color: $text-color;
+    padding: $padding;
+    border: 2px solid $accent-color;
     border-radius: $border-radius;
-    padding: 40px;
-    width: 100%;
     max-width: 600px;
     margin: 0 auto;
-    text-align: center;
 
     h1 {
-        margin-bottom: 20px;
         font-size: 2em;
+        text-align: center;
+        margin-bottom: 20px;
+        font-family: 'Cinzel', serif;
     }
 
-    form {
+    #campaignForm {
         display: flex;
         flex-direction: column;
 
         label {
-            margin: 10px 0 5px;
-            font-weight: bold;
-            text-align: left;
+            margin-bottom: 10px;
+            font-size: 1.2em;
         }
 
         input {
             padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: $border-radius;
             margin-bottom: 20px;
-            font-size: 1em;
-            background-color: #FFDAB9;
-
-            &:focus {
-                border-color: $button-bg;
-                outline: none;
-            }
+            border: 1px solid $accent-color;
+            border-radius: $border-radius;
+            background-color: lighten($primary-bg, 10%);
+            color: $text-color;
         }
 
         button {
             background-color: $button-bg;
             color: $button-color;
-            border: none;
             padding: 10px 20px;
+            border: none;
             border-radius: $border-radius;
+            font-size: 1.2em;
             cursor: pointer;
             transition: background-color 0.3s;
+            margin: 10px 0;
 
             &:hover {
                 background-color: darken($button-bg, 10%);
             }
-        }
 
-        .back-button {
-            background-color: #E5343F; 
-            color: white; 
-            margin-top: 10px; 
-            transition: background-color 0.3s;
+            &.back-button {
+                background-color: $accent-color;
+                color: $primary-bg;
 
-            &:hover {
-                background-color: darken(#cccccc, 10%);
+                &:hover {
+                    background-color: darken($accent-color, 10%);
+                }
             }
         }
     }

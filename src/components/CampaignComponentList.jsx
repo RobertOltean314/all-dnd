@@ -1,7 +1,18 @@
 import React from "react";
+import CampaignComponent from "./CampaignComponent";
+import { Link } from "react-router-dom";
 
 function CampaignList() {
-  return <div id="homepage__listOfCampaigns">Soon to be implemented</div>;
+  const [campaigns, setCampaigns] = React.useState([]);
+
+  return (
+    <div id="dungeonMasterPage__listOfCampaigns">
+      <Link to="create-new-campaign">
+        <button id="createNewCampaign__button">Create new Campaign</button>
+      </Link>
+      <CampaignComponent />
+    </div>
+  );
 }
 
 export default CampaignList;
