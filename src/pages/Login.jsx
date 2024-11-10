@@ -1,61 +1,121 @@
-import { useState } from "react";
+import React, { useState } from "react";
 
-export default function Login() {
+const Login = () => {
   const [enteredValues, setEnteredValues] = useState({
     email: "",
     password: "",
   });
 
-  const isEmailInvalid =
-    enteredValues.email !== "" && !enteredValues.email.includes("@");
+  const [didEdit, setDidEdit] = useState({
+    email: false,
+    password: false,
+  });
 
-  function handleSubmit(event) {
+  const [errors, setErrors] = useState({
+    email: "",
+    password: "",
+  });
+
+  const validateEmail = (email) => {
+    if (!email.includes("@")) {
+      return "Invalid email address.";
+    }
+    return "";
+  };
+
+  const validatePassword = (password) => {
+    const specialCharacterRegex = /[!@#$%^&*(),.?":{}|<>]/;
+
+    if (password.length < 6) {
+      return "Password must be at least 6 characters long.";
+    }
+    if (!specialCharacterRegex.test(password)) {
+      return "Password must contain at least one special character.";
+    }
+    return "";
+  };
+
+  const handleSubmit = (event) => {
     event.preventDefault();
 
     const formData = new FormData(event.target);
     const data = Object.fromEntries(formData.entries());
-    console.log(data);
-  }
 
-  function handleInputChange(identifier, event) {
+    const emailError = validateEmail(data.email);
+    const passwordError = validatePassword(data.password);
+
+    if (emailError || passwordError) {
+      setErrors({
+        email: emailError,
+        password: passwordError,
+      });
+      return;
+    }
+
+    console.log(data);
+  };
+
+  const handleInputChange = (identifier, event) => {
     setEnteredValues((prevValues) => ({
       ...prevValues,
       [identifier]: event.target.value,
     }));
-  }
+    setDidEdit((prevEdit) => ({
+      ...prevEdit,
+      [identifier]: false,
+    }));
+    setErrors((prevErrors) => ({
+      ...prevErrors,
+      [identifier]: "",
+    }));
+  };
+
+  const handleInputBlur = (identifier) => {
+    setDidEdit((prevEdit) => ({
+      ...prevEdit,
+      [identifier]: true,
+    }));
+
+    if (identifier === "email") {
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        email: validateEmail(enteredValues.email),
+      }));
+    } else if (identifier === "password") {
+      setErrors((prevErrors) => ({
+        ...prevErrors,
+        password: validatePassword(enteredValues.password),
+      }));
+    }
+  };
 
   return (
     <form onSubmit={handleSubmit}>
-      <h2>Login</h2>
-
       <div>
-        <div>
-          <label htmlFor="email">Email</label>
-          <input
-            id="email"
-            type="email"
-            name="email"
-            onChange={(event) => handleInputChange("email", event)}
-            value={enteredValues.email}
-          />
-          <div>{isEmailInvalid && <p>Please enter a valid email!</p>}</div>
-        </div>
-        <div>
-          <label htmlFor="pasword">Password</label>
-          <input
-            id="password"
-            type="password"
-            name="password"
-            onChange={(event) => handleInputChange("password", event)}
-            value={enteredValues.password}
-          />
-        </div>
+        <label>Email:</label>
+        <input
+          type="email"
+          name="email"
+          value={enteredValues.email}
+          onChange={(e) => handleInputChange("email", e)}
+          onBlur={() => handleInputBlur("email")}
+        />
+        {didEdit.email && errors.email && <span>{errors.email}</span>}
       </div>
-
-      <p>
-        <button type="reset">Reset</button>
-        <button type="submit">Login</button>
-      </p>
+      <div>
+        <label>Password:</label>
+        <input
+          type="password"
+          name="password"
+          value={enteredValues.password}
+          onChange={(e) => handleInputChange("password", e)}
+          onBlur={() => handleInputBlur("password")}
+        />
+        {didEdit.password && errors.password && <span>{errors.password}</span>}
+      </div>
+      <button type="submit">Login</button>
     </form>
   );
-}
+};
+
+export default Login;
