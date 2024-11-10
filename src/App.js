@@ -4,11 +4,13 @@ import Homepage from "./pages/Homepage";
 import DungeonMaster from "./components/DungeonMaster";
 import CreateNewCampaign from "./components/CreateNewCampaign";
 import Player from "./components/Player";
+import Login from "./pages/Login";
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
+        <Route path="/login" element={<Login />} />
         <Route path="/" element={<Homepage />} />
         <Route path="/dungeon-master-page" element={<DungeonMaster />}>
           <Route path="create-new-campaign" element={<CreateNewCampaign />} />
