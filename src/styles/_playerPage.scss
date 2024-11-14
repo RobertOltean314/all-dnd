@@ -1,4 +1,4 @@
-#campaignPage{
+#playerPage{
     background-image: linear-gradient($primary-bg, $primary-bg), url('../images/homepage-tavern.gif');
     font-family: Arial, sans-serif;
     display: flex;
@@ -7,6 +7,6 @@
     justify-content: center;
     height: 100vh;
     width: 100%;
-    color: $text-color;
     cursor: default;
+    color: $text-color;
 }

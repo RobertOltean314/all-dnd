@@ -1,6 +1,6 @@
 function CampaignPage() {
   return (
-    <div>
+    <div id="campaignPage">
       <h1>To be implemented</h1>
     </div>
   );

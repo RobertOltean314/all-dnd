@@ -1,17 +1,11 @@
-// _variables.scss
-
-
-$list-bg: #D4A373; // Muted brown
-$list-shadow: 0 4px 16px rgba(0, 0, 0, 0.2); // Slightly darker shadow
-$card-bg: #F5DEB3; // Wheat color
-$card-shadow: 0 2px 8px rgba(0, 0, 0, 0.2); // Slightly darker shadow
-$button-bg: #8B4513; // Saddle brown
-$button-color: #f5e6cc; // Parchment color
-$border-radius: 5px; // Slightly less rounded
-$padding: 15px; // Slightly less padding
-$navbar-bg: #2F4F4F; // Dark slate gray
-$navbar-item-bg-hover: #556B2F; // Dark olive green
-$text-color: #f5e6cc; // Parchment color
-
-$primary-bg: #3b2f2f; // Dark brown
-$accent-color: #b8860b; // Golden rod
+// $list-bg:
+// $card-bg: 
+$button-bg: #5b3e23;
+$button-hover-color: #714c2e; //hover
+$button-active-color: #3e2a1c; //on click
+$navbar-bg: #351600;
+// $navbar-item-bg-hover: 
+$text-color: #ffffff;
+$primary-bg: rgba(91, 62, 35, 0.7);
+$accent-color: rgb(255, 180, 115, 0.8);
+$btn-font-size: 1em;
