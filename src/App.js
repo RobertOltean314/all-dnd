@@ -1,25 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Homepage from "./components/Homepage";
+import DungeonMasterPage from "./components/DungeonMasterPage";
+import CreateCampaign from "./components/CreateCampaign";
+import PlayerPage from "./components/PlayerPage";
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: <Homepage />,
+  },
+  {
+    path: "/dungeon-master-page",
+    element: <DungeonMasterPage />,
+    children: [{ path: "create-new-campaign", element: <CreateCampaign /> }],
+  },
+  {
+    path: "/player-page",
+    element: <PlayerPage />,
+  },
+]);
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+  return <RouterProvider router={router} />;
 }
 
 export default App;
