@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 export default function Homepage() {
   return (
-    <>
+    <div id="homepage">
       <h1 id="homepage__header">Welcome to All Dnd!!!</h1>
       <div id="homepage__body">
         <h2 id="homepage__body__header">What do you want to be?</h2>
@@ -13,6 +13,6 @@ export default function Homepage() {
           <button id="playerButton">Player</button>
         </Link>
       </div>
-    </>
+    </div>
   );
 }

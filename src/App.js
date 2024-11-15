@@ -1,7 +1,6 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Homepage from "./components/Homepage";
 import DungeonMasterPage from "./components/DungeonMasterPage";
-import CreateCampaign from "./components/CreateCampaign";
 import PlayerPage from "./components/PlayerPage";
 
 const router = createBrowserRouter([
@@ -12,7 +11,6 @@ const router = createBrowserRouter([
   {
     path: "/dungeon-master-page",
     element: <DungeonMasterPage />,
-    children: [{ path: "create-new-campaign", element: <CreateCampaign /> }],
   },
   {
     path: "/player-page",
