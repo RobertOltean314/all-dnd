@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import EncountersSection from "./sections/EncountersSection";
-import MapSection from "./sections/MapSection";
-import CalendarSection from "./sections/CalendarSection";
+import EncountersSection from "../../sections/EncountersSection";
+import MapSection from "../../sections/MapSection";
+import CalendarSection from "../../sections/CalendarSection";
 
 function CampaignPage() {
   const [selectedSection, setSelectedSection] = useState("encounters");
