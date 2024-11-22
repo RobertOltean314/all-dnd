@@ -5,7 +5,7 @@ import MapSection from "../../sections/MapSection";
 import CalendarSection from "../../sections/CalendarSection";
 
 function CampaignPage() {
-  const [selectedSection, setSelectedSection] = useState("encounters");
+  const [selectedSection, setSelectedSection] = useState("");
 
   const renderSection = () => {
     switch (selectedSection) {
