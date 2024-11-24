@@ -1,20 +1,14 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-<<<<<<< Updated upstream:src/components/CampaignPage.jsx
-import EncountersSection from "./sections/EncountersSection";
-import MapSection from "./sections/MapSection";
-import CalendarSection from "./sections/CalendarSection";
-=======
 import EncountersSection from "../../sections/EncountersSection";
 import MapSection from "../../sections/MapSection";
 import CalendarSection from "../../sections/CalendarSection";
 import NPCsSection from "../../sections/NPCsSection.jsx";
 import QuestsSection from "../../sections/QuestsSection";
 import PlayerCharactersSection from "../../sections/PlayerCharactersSection";
->>>>>>> Stashed changes:src/components/pages/dungeonMaster/CampaignPage.jsx
 
 function CampaignPage() {
-  const [selectedSection, setSelectedSection] = useState("encounters");
+  const [selectedSection, setSelectedSection] = useState("");
 
   const renderSection = () => {
     switch (selectedSection) {
