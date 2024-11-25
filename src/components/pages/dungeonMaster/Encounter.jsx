@@ -26,7 +26,7 @@ function Encounter({
     ac: "",
     initiative: "",
     xp: "",
-    conditions: [],
+    condition: "",
   });
 
   useEffect(() => {
@@ -49,7 +49,7 @@ function Encounter({
       ...newMonster,
       id: Date.now(),
       maxHp: newMonster.hp,
-      conditions: [],
+      condition: "",
     };
     setMonsterList([...monsterList, monsterWithId]);
     setNewMonster({ 
@@ -59,7 +59,7 @@ function Encounter({
       ac: "",
       initiative: "",
       xp: "",
-      conditions: [],
+      condition: "",
     });
   };
 
@@ -83,23 +83,22 @@ function Encounter({
     setCurrentTurn((currentTurn + 1) % initiativeOrder.length);
   };
 
-  const toggleCondition = (monsterId, condition) => {
-    setMonsterList(monsterList.map(monster => {
-      if (monster.id === monsterId) {
-        const conditions = monster.conditions || [];
-        const updatedConditions = conditions.includes(condition)
-          ? conditions.filter(c => c !== condition)
-          : [...conditions, condition];
-        return { ...monster, conditions: updatedConditions };
-      }
-      return monster;
-    }));
-  };
-
   const conditions = [
-    "Blinded", "Charmed", "Deafened", "Frightened", "Grappled",
-    "Incapacitated", "Invisible", "Paralyzed", "Petrified",
-    "Poisoned", "Prone", "Restrained", "Stunned", "Unconscious"
+    "",
+    "Blinded",
+    "Charmed",
+    "Deafened",
+    "Frightened",
+    "Grappled",
+    "Incapacitated",
+    "Invisible",
+    "Paralyzed",
+    "Petrified",
+    "Poisoned",
+    "Prone",
+    "Restrained",
+    "Stunned",
+    "Unconscious"
   ];
 
   return (
@@ -202,19 +201,19 @@ function Encounter({
                         onChange={(e) => handleMonsterChange(index, "initiative", e.target.value)}
                       />
                     </div>
-                  </div>
-                  <div className="monster-conditions">
-                    <label>Conditions:</label>
-                    <div className="conditions-list">
-                      {conditions.map(condition => (
-                        <button
-                          key={condition}
-                          className={`condition-tag ${monster.conditions?.includes(condition) ? 'active' : ''}`}
-                          onClick={() => toggleCondition(monster.id, condition)}
-                        >
-                          {condition}
-                        </button>
-                      ))}
+                    <div className="stat-group">
+                      <label>Condition:</label>
+                      <select
+                        value={monster.condition || ""}
+                        onChange={(e) => handleMonsterChange(index, "condition", e.target.value)}
+                        className={`condition-select ${monster.condition ? 'has-condition' : ''}`}
+                      >
+                        {conditions.map(condition => (
+                          <option key={condition} value={condition}>
+                            {condition || "None"}
+                          </option>
+                        ))}
+                      </select>
                     </div>
                   </div>
                 </div>
@@ -222,35 +221,37 @@ function Encounter({
             </div>
 
             <div className="add-monster-form">
-              <h4>Add New Monster</h4>
-              <div className="form-row">
+              <h4>Add Monster</h4>
+              <div className="form-group">
                 <input
                   type="text"
                   placeholder="Name"
                   value={newMonster.name}
                   onChange={(e) => handleNewMonsterChange("name", e.target.value)}
-                  className="form-control"
                 />
                 <input
                   type="number"
                   placeholder="HP"
                   value={newMonster.hp}
                   onChange={(e) => handleNewMonsterChange("hp", e.target.value)}
-                  className="form-control"
                 />
                 <input
                   type="number"
                   placeholder="AC"
                   value={newMonster.ac}
                   onChange={(e) => handleNewMonsterChange("ac", e.target.value)}
-                  className="form-control"
+                />
+                <input
+                  type="number"
+                  placeholder="Initiative"
+                  value={newMonster.initiative}
+                  onChange={(e) => handleNewMonsterChange("initiative", e.target.value)}
                 />
                 <input
                   type="number"
                   placeholder="XP"
                   value={newMonster.xp}
                   onChange={(e) => handleNewMonsterChange("xp", e.target.value)}
-                  className="form-control"
                 />
                 <button 
                   onClick={addMonster}
