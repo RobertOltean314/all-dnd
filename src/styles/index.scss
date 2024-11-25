@@ -1,9 +1,11 @@
-$font-family: 'Cinzel', serif;
+$font-family: "Cinzel", serif;
 $background-color: #f4f1de; // Light background color
 $header-color: #3d2b1f; // Dark brown color for headers
 $button-color: #6b4226; // Brown button color
 $button-hover-color: #8b5e34; // Lighter brown for hover effect
 $button-text-color: #fff; // White text for buttons
+
+@import "./encounters.scss";
 
 body {
   font-family: $font-family;
@@ -13,7 +15,8 @@ body {
   padding: 0;
 }
 
-#homepage, .campaign-page {
+#homepage,
+.campaign-page {
   display: flex;
   height: 100vh; // Ensure the parent container takes the full height
 

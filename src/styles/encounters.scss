@@ -1,0 +1,444 @@
+// D&D Theme Variables
+$parchment-color: #f4e4bc;
+$ink-color: #2c1810;
+$scroll-border: #8b4513;
+$leather-brown: #8b4513;
+$gold: #ffd700;
+$blood-red: #8b0000;
+$forest-green: #228b22;
+$mystic-purple: #663399;
+
+// Mixins
+@mixin parchment-background {
+  background: $parchment-color;
+  background-image: linear-gradient(
+      rgba(255, 255, 255, 0.2) 2px,
+      transparent 2px
+    ),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.2) 2px, transparent 2px);
+  background-size: 50px 50px;
+}
+
+@mixin medieval-border {
+  border: 2px solid $scroll-border;
+  box-shadow: 0 0 0 1px rgba(139, 69, 19, 0.3), 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+@mixin scroll-edges {
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    width: 20px;
+    height: 100%;
+    top: 0;
+    background: rgba(139, 69, 19, 0.1);
+    border-radius: 5px;
+  }
+
+  &::before {
+    left: 0;
+  }
+  &::after {
+    right: 0;
+  }
+}
+
+.encounters-section {
+  padding: 30px;
+  @include parchment-background;
+  min-height: 100vh;
+
+  h1 {
+    color: $ink-color;
+    font-family: "MedievalSharp", cursive;
+    text-align: center;
+    font-size: 2.5em;
+    margin-bottom: 1.5em;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+
+    &::after {
+      content: "⚔️";
+      display: block;
+      font-size: 0.5em;
+      margin-top: 10px;
+    }
+  }
+
+  .encounter-creation {
+    @include medieval-border;
+    margin: 0 auto 40px;
+    padding: 25px;
+    max-width: 800px;
+    background: lighten($parchment-color, 5%);
+    border-radius: 12px;
+    position: relative;
+    @include scroll-edges;
+
+    h3 {
+      color: $leather-brown;
+      font-family: "MedievalSharp", cursive;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    .form-group {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+
+      input,
+      textarea {
+        padding: 12px;
+        border: 1px solid rgba($scroll-border, 0.3);
+        border-radius: 6px;
+        background: white;
+        font-family: "Crimson Text", serif;
+        transition: all 0.3s ease;
+
+        &:focus {
+          outline: none;
+          border-color: $gold;
+          box-shadow: 0 0 5px rgba($gold, 0.3);
+        }
+      }
+
+      textarea {
+        width: 100%;
+        min-height: 120px;
+        resize: vertical;
+        line-height: 1.6;
+      }
+    }
+  }
+
+  .encounters-list {
+    display: grid;
+    gap: 30px;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    padding: 20px;
+  }
+}
+
+.encounter-container {
+  @include medieval-border;
+  padding: 20px;
+  background: white;
+  border-radius: 12px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 0 0 1px rgba(139, 69, 19, 0.3), 0 8px 20px rgba(0, 0, 0, 0.2);
+  }
+
+  &.planning {
+    border-left: 6px solid $gold;
+    &::before {
+      content: "📜";
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 1.2em;
+      opacity: 0.3;
+    }
+  }
+
+  &.active {
+    border-left: 6px solid $forest-green;
+    &::before {
+      content: "⚔️";
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 1.2em;
+      opacity: 0.3;
+    }
+  }
+
+  &.completed {
+    border-left: 6px solid $mystic-purple;
+    opacity: 0.85;
+    &::before {
+      content: "✨";
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      font-size: 1.2em;
+      opacity: 0.3;
+    }
+  }
+
+  .encounter-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid rgba($scroll-border, 0.1);
+
+    h2 {
+      margin: 0;
+      font-size: 1.8em;
+      font-family: "MedievalSharp", cursive;
+      color: $ink-color;
+    }
+
+    .encounter-stats {
+      display: flex;
+      gap: 15px;
+      align-items: center;
+
+      .difficulty {
+        padding: 6px 12px;
+        border-radius: 6px;
+        font-weight: bold;
+        text-transform: uppercase;
+        font-size: 0.8em;
+        letter-spacing: 1px;
+        transition: all 0.3s ease;
+
+        &.easy {
+          background: rgba($forest-green, 0.2);
+          color: darken($forest-green, 10%);
+        }
+        &.medium {
+          background: rgba($gold, 0.2);
+          color: darken($gold, 30%);
+        }
+        &.hard {
+          background: rgba($blood-red, 0.2);
+          color: $blood-red;
+        }
+        &.deadly {
+          background: $blood-red;
+          color: white;
+          animation: pulse 2s infinite;
+        }
+      }
+
+      .xp {
+        font-weight: bold;
+        color: $leather-brown;
+        font-family: "Crimson Text", serif;
+      }
+    }
+  }
+
+  .initiative-tracker {
+    background: rgba($parchment-color, 0.5);
+    border-radius: 8px;
+    padding: 20px;
+    margin: 20px 0;
+    border: 1px solid rgba($scroll-border, 0.2);
+
+    h3 {
+      color: $leather-brown;
+      font-family: "MedievalSharp", cursive;
+      margin-bottom: 15px;
+    }
+
+    .initiative-list {
+      .initiative-entry {
+        background: white;
+        border: 1px solid rgba($scroll-border, 0.2);
+        border-radius: 6px;
+        padding: 10px;
+        margin: 5px 0;
+        display: flex;
+        align-items: center;
+        transition: all 0.3s ease;
+
+        &.current-turn {
+          background: rgba($gold, 0.1);
+          border-color: $gold;
+          transform: scale(1.02);
+        }
+
+        .initiative-roll {
+          background: $ink-color;
+          color: white;
+          width: 30px;
+          height: 30px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border-radius: 50%;
+          margin-right: 15px;
+          font-weight: bold;
+        }
+      }
+    }
+  }
+
+  .monster-card {
+    background: white;
+    border: 1px solid rgba($scroll-border, 0.2);
+    border-radius: 8px;
+    padding: 20px;
+    margin: 15px 0;
+    transition: all 0.3s ease;
+
+    &:hover {
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .monster-header {
+      h4 {
+        font-family: "MedievalSharp", cursive;
+        color: $ink-color;
+      }
+    }
+
+    .monster-stats {
+      .stat-group {
+        label {
+          color: $leather-brown;
+          font-family: "Crimson Text", serif;
+        }
+
+        input {
+          &.hp-input {
+            &.low-hp {
+              color: $blood-red;
+              animation: pulse 2s infinite;
+            }
+          }
+        }
+      }
+    }
+
+    .monster-conditions {
+      .condition-tag {
+        font-family: "Crimson Text", serif;
+        transition: all 0.3s ease;
+
+        &.active {
+          transform: scale(1.05);
+        }
+      }
+    }
+  }
+}
+
+.add-monster-form {
+  background: rgba($parchment-color, 0.5);
+  border-radius: 8px;
+  padding: 20px;
+  margin-top: 25px;
+  border: 1px solid rgba($scroll-border, 0.2);
+
+  h4 {
+    font-family: "MedievalSharp", cursive;
+    color: $leather-brown;
+    margin-bottom: 15px;
+  }
+}
+
+// Animations
+@keyframes pulse {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+// Button Styles
+.btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: "Crimson Text", serif;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-transform: uppercase;
+  font-size: 0.9em;
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  &.btn-primary {
+    background: $leather-brown;
+    color: white;
+    &:hover {
+      background: darken($leather-brown, 10%);
+      transform: translateY(-2px);
+    }
+  }
+
+  &.btn-success {
+    background: $forest-green;
+    color: white;
+    &:hover {
+      background: darken($forest-green, 10%);
+      transform: translateY(-2px);
+    }
+  }
+
+  &.btn-danger {
+    background: $blood-red;
+    color: white;
+    &:hover {
+      background: darken($blood-red, 10%);
+      transform: translateY(-2px);
+    }
+  }
+
+  &.btn-info {
+    background: $mystic-purple;
+    color: white;
+    &:hover {
+      background: darken($mystic-purple, 10%);
+      transform: translateY(-2px);
+    }
+  }
+
+  &.btn-sm {
+    padding: 6px 12px;
+    font-size: 0.8em;
+  }
+}
+
+// Responsive Design
+@media (max-width: 768px) {
+  .encounters-section {
+    padding: 15px;
+
+    .encounters-list {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .encounter-container {
+    .encounter-header {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 15px;
+
+      .encounter-stats {
+        flex-wrap: wrap;
+      }
+    }
+  }
+
+  .monster-card {
+    .monster-stats {
+      flex-direction: column;
+      gap: 10px;
+    }
+  }
+}
