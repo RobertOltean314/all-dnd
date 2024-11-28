@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Card from "../common/Card";
 
 const HomePage = () => {
   return (
@@ -12,17 +11,13 @@ const HomePage = () => {
 
       <div className="cards-container">
         <Link to="/dm/sessions" className="card-link">
-          <Card>
-            <h2>Dungeon Master</h2>
-            <p>Create and manage your campaigns, NPCs, encounters, and more.</p>
-          </Card>
+          <h2>Dungeon Master</h2>
+          <p>Create and manage your campaigns, NPCs, encounters, and more.</p>
         </Link>
 
         <Link to="/player" className="card-link">
-          <Card>
-            <h2>Player</h2>
-            <p>Manage your characters, track inventory, and join campaigns.</p>
-          </Card>
+          <h2>Player</h2>
+          <p>Manage your characters, track inventory, and join campaigns.</p>
         </Link>
       </div>
     </div>

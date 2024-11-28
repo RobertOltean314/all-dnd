@@ -1,41 +1,33 @@
-import React from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { ThemeProvider } from "./context/ThemeContext";
-import MainLayout from "./components/layout/MainLayout";
-import HomePage from "./components/pages/HomePage";
-import DungeonMasterEncounters from "./components/pages/encounters/DungeonMasterEncounters";
-
-// DM Pages
-const DungeonMasterSessions = () => <div>DM Sessions Page</div>;
-const DungeonMasterMap = () => <div>DM Map Page</div>;
-const DungeonMasterCalendar = () => <div>DM Calendar Page</div>;
-const DungeonMasterQuests = () => <div>DM Quests Page</div>;
-const DungeonMasterNotes = () => <div>DM Notes Page</div>;
-
-// Player Page
-const PlayerPage = () => <div>Player Page</div>;
+import React, { useState } from "react";
+import Sidebar from "./components/layout/Sidebar";
+import Encounters from "./components/encounters/Encounters";
+import Calendar from "./components/pages/Calendar";
+import Map from "./components/pages/Map";
+import Quests from "./components/pages/Quests";
 
 function App() {
+  const [currentView, setCurrentView] = useState("home");
+
+  const renderContent = () => {
+    switch (currentView) {
+      case "encounters":
+        return <Encounters />;
+      case "calendar":
+        return <Calendar />;
+      case "map":
+        return <Map />;
+      case "quests":
+        return <Quests />;
+      default:
+        return null;
+    }
+  };
+
   return (
-    <ThemeProvider>
-      <Router>
-        <MainLayout>
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/dm/sessions" element={<DungeonMasterSessions />} />
-            <Route
-              path="/dm/encounters"
-              element={<DungeonMasterEncounters />}
-            />
-            <Route path="/dm/map" element={<DungeonMasterMap />} />
-            <Route path="/dm/calendar" element={<DungeonMasterCalendar />} />
-            <Route path="/dm/quests" element={<DungeonMasterQuests />} />
-            <Route path="/dm/notes" element={<DungeonMasterNotes />} />
-            <Route path="/player" element={<PlayerPage />} />
-          </Routes>
-        </MainLayout>
-      </Router>
-    </ThemeProvider>
+    <div className="app-container">
+      <Sidebar setCurrentView={setCurrentView} />
+      <section className="main-content">{renderContent()}</section>
+    </div>
   );
 }
 

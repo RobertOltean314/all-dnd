@@ -1,246 +1,42 @@
-:root {
-  /* Brown Color Palette */
-  --color-primary: #5c4033; /* Dark Brown */
-  --color-primary-hover: #3b2820; /* Darker Brown */
-  --color-secondary: #8b7355; /* Medium Brown */
-  --color-secondary-hover: #6b573f; /* Medium Dark Brown */
-  --color-background: #d2b48c; /* Tan */
-  --color-surface: #c19a6b; /* Light Brown */
-  --color-text: #2c1810; /* Very Dark Brown */
-  --color-text-secondary: #4a3728; /* Dark Brown */
-  --shadow-sm: 0 2px 4px rgba(44, 24, 16, 0.1);
-  --shadow: 0 4px 6px rgba(44, 24, 16, 0.15);
-  --shadow-lg: 0 10px 15px rgba(44, 24, 16, 0.2),
-    0 4px 6px rgba(44, 24, 16, 0.1);
-  --sidebar-width: 250px;
-
-  /* Border Colors */
-  --border-primary: #5c4033; /* Dark Brown */
-  --border-secondary: #9b7653; /* Medium Brown */
-}
-
-/* Base Styles */
 * {
   margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+  border: 0;
 }
 
-body {
-  font-family: "Merriweather", serif;
-  line-height: 1.5;
-  color: var(--color-text);
-  background-color: var(--color-background);
-  background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%239b7653' fill-opacity='0.1' fill-rule='evenodd'%3E%3Cpath d='M0 40L40 0H20L0 20M40 40V20L20 40'/%3E%3C/g%3E%3C/svg%3E");
-}
-
-/* Layout */
 .app-container {
+  margin: 0;
+  font-family: Arial, sans-serif;
   display: flex;
-  min-height: 100vh;
+  height: 100vh;
+}
+
+.sidebar {
+  width: 200px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  background-color: #333;
+  color: white;
+}
+
+.sidebar .sidebar-list {
+  list-style-type: none;
+  padding: 10px;
+}
+
+.sidebar li {
+  margin: 10px 0;
 }
 
 .main-content {
-  flex: 1;
-  padding: 2rem;
-  margin-left: var(--sidebar-width);
+  margin-left: 200px;
+  padding: 20px;
+  flex-grow: 1;
+  overflow: auto;
 }
 
-/* Sidebar */
-.sidebar {
-  position: fixed;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  width: var(--sidebar-width);
-  background-color: var(--color-surface);
-  box-shadow: var(--shadow);
-  display: flex;
-  flex-direction: column;
-  z-index: 10;
-  border-right: 2px solid var(--border-primary);
-  background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%235c4033' fill-opacity='0.05' fill-rule='evenodd'%3E%3Ccircle cx='3' cy='3' r='3'/%3E%3Ccircle cx='13' cy='13' r='3'/%3E%3C/g%3E%3C/svg%3E");
+h1,
+p {
+  color: #333;
 }
-
-.sidebar-header {
-  padding: 1.5rem;
-  border-bottom: 2px solid var(--border-secondary);
-  background-color: var(--color-primary);
-}
-
-.logo {
-  font-family: "MedievalSharp", cursive;
-  font-size: 1.75rem;
-  font-weight: bold;
-  text-decoration: none;
-  color: var(--color-background);
-  text-shadow: 2px 2px 4px rgba(44, 24, 16, 0.3);
-}
-
-.sidebar-content {
-  padding: 1rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.nav-section {
-  display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
-}
-
-.nav-item {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0.75rem 1rem;
-  text-decoration: none;
-  color: var(--color-text);
-  border-radius: 0.375rem;
-  cursor: pointer;
-  border: 1px solid transparent;
-  background: none;
-  width: 100%;
-  text-align: left;
-  font-size: 1rem;
-  transition: all 0.2s ease;
-}
-
-.nav-item:hover {
-  background-color: rgba(92, 64, 51, 0.1);
-  border-color: var(--border-secondary);
-}
-
-.nav-item.active {
-  background-color: var(--color-primary);
-  color: var(--color-background);
-  border-color: var(--border-primary);
-}
-
-.nav-item.expanded {
-  background-color: rgba(92, 64, 51, 0.05);
-  border-color: var(--border-secondary);
-}
-
-.subnav {
-  display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
-  margin-left: 1rem;
-  padding-left: 1rem;
-  border-left: 2px solid var(--border-secondary);
-}
-
-.sub-item {
-  font-size: 0.9rem;
-  padding: 0.5rem 1rem;
-}
-
-/* Components */
-.card {
-  background-color: var(--color-surface);
-  border-radius: 0.5rem;
-  padding: 1.5rem;
-  box-shadow: var(--shadow);
-  border: 1px solid var(--border-secondary);
-  position: relative;
-  overflow: hidden;
-}
-
-.card::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 4px;
-  background: linear-gradient(
-    to right,
-    var(--border-primary),
-    var(--border-secondary)
-  );
-}
-
-.card h2 {
-  margin-bottom: 1rem;
-  color: var(--color-text);
-  font-family: "MedievalSharp", cursive;
-  font-size: 1.5rem;
-}
-
-.card p {
-  color: var(--color-text-secondary);
-}
-
-/* Home Page */
-.home-page {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 2rem;
-}
-
-.home-page h1 {
-  font-family: "MedievalSharp", cursive;
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
-  color: var(--color-text);
-  text-align: center;
-  text-shadow: 2px 2px 4px rgba(44, 24, 16, 0.2);
-}
-
-.intro-text {
-  font-size: 1.2rem;
-  color: var(--color-text-secondary);
-  margin-bottom: 2rem;
-  text-align: center;
-  font-style: italic;
-}
-
-.cards-container {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  max-width: 600px;
-  margin: 0 auto;
-}
-
-.card-link {
-  text-decoration: none;
-  color: inherit;
-  transition: transform 0.2s ease;
-  display: block;
-}
-
-.card-link:hover {
-  transform: translateY(-4px);
-}
-
-.card-link .card {
-  height: 100%;
-  transition: all 0.2s ease;
-}
-
-.card-link:hover .card {
-  box-shadow: var(--shadow-lg);
-  border-color: var(--border-primary);
-}
-
-/* Responsive */
-@media (max-width: 768px) {
-  .sidebar {
-    transform: translateX(-100%);
-    transition: transform 0.3s ease-in-out;
-  }
-
-  .sidebar.open {
-    transform: translateX(0);
-  }
-
-  .main-content {
-    margin-left: 0;
-  }
-}
-
-/* Add medieval font imports */
-@import url("https://fonts.googleapis.com/css2?family=MedievalSharp&family=Merriweather:ital,wght@0,400;0,700;1,400&display=swap");
