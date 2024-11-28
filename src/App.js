@@ -1,32 +1,19 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import Homepage from "./components/pages/Homepage";
-import DungeonMasterPage from "./components/pages/dungeonMaster/DungeonMasterPage";
-import PlayerPage from "./components/pages/player/PlayerPage";
-import CampaignPage from "./components/pages/dungeonMaster/CampaignPage";
-
-const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <Homepage />,
-  },
-  {
-    path: "/dungeon-master-page",
-    element: <DungeonMasterPage />,
-    children: [
-      {
-        path: "campaign/test-campaign",
-        element: <CampaignPage />,
-      },
-    ],
-  },
-  {
-    path: "/player-page",
-    element: <PlayerPage />,
-  },
-]);
+import React from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { ThemeProvider } from "./context/ThemeContext";
+import HomePage from "./components/pages/HomePage";
 
 function App() {
-  return <RouterProvider router={router} />;
+  return (
+    <ThemeProvider>
+      <Router>
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          {/* Additional routes will be added here */}
+        </Routes>
+      </Router>
+    </ThemeProvider>
+  );
 }
 
 export default App;
