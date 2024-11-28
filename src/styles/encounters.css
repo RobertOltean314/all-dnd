@@ -1,0 +1,502 @@
+@charset "UTF-8";
+
+.encounters-section {
+  padding: 30px;
+  background: #f4e4bc;
+  background-image: linear-gradient(
+      rgba(255, 255, 255, 0.2) 2px,
+      transparent 2px
+    ),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.2) 2px, transparent 2px);
+  background-size: 50px 50px;
+  min-height: 100vh;
+}
+
+.encounters-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+  padding: 0 1rem;
+}
+
+.encounters-header h1 {
+  color: #2c1810;
+  font-family: "MedievalSharp", cursive;
+  font-size: 2.5em;
+  margin: 0;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.encounters-header button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.encounter-creation {
+  border: 2px solid #8b4513;
+  box-shadow: 0 0 0 1px rgba(139, 69, 19, 0.3), 0 4px 10px rgba(0, 0, 0, 0.2);
+  margin: 0 auto;
+  padding: 2rem;
+  max-width: 800px;
+  background: #f8edd2;
+  border-radius: 12px;
+  position: relative;
+}
+
+.encounter-creation .form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.encounter-creation .form-group input,
+.encounter-creation .form-group textarea {
+  padding: 1rem;
+  border: 1px solid rgba(139, 69, 19, 0.3);
+  border-radius: 6px;
+  background: white;
+  font-family: "Crimson Text", serif;
+  transition: all 0.3s ease;
+}
+
+.encounter-creation .form-group input:focus,
+.encounter-creation .form-group textarea:focus {
+  outline: none;
+  border-color: #ffd700;
+  box-shadow: 0 0 5px rgba(255, 215, 0, 0.3);
+}
+
+.encounter-creation .form-group textarea {
+  min-height: 120px;
+  resize: vertical;
+  line-height: 1.6;
+}
+
+.encounter-creation .form-group button {
+  align-self: flex-end;
+  margin-top: 1rem;
+}
+
+.encounters-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 1rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.encounter-card {
+  width: 100%;
+  border: 2px solid #8b4513;
+  box-shadow: 0 0 0 1px rgba(139, 69, 19, 0.3), 0 4px 10px rgba(0, 0, 0, 0.2);
+  padding: 1.5rem;
+  background: white;
+  border-radius: 12px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.encounter-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 0 1px rgba(139, 69, 19, 0.3), 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+.encounter-card.planning {
+  border-left: 6px solid #ffd700;
+}
+
+.encounter-card.active {
+  border-left: 6px solid #228b22;
+}
+
+.encounter-card.completed {
+  border-left: 6px solid #4a4a4a;
+  opacity: 0.8;
+}
+
+.encounter-card .encounter-header {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(139, 69, 19, 0.2);
+}
+
+.encounter-card .encounter-header h2 {
+  margin: 0;
+  font-size: 1.8em;
+  font-family: "MedievalSharp", cursive;
+  color: #2c1810;
+}
+
+.encounter-card .encounter-header .encounter-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: flex-start;
+}
+
+.encounter-card .encounter-header .encounter-stats .difficulty {
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 0.8em;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+}
+
+.encounter-card .encounter-header .encounter-stats .difficulty.easy {
+  background: rgba(34, 139, 34, 0.2);
+  color: #186218;
+}
+
+.encounter-card .encounter-header .encounter-stats .difficulty.medium {
+  background: rgba(255, 215, 0, 0.2);
+  color: #665600;
+}
+
+.encounter-card .encounter-header .encounter-stats .difficulty.hard {
+  background: rgba(139, 0, 0, 0.2);
+  color: #8b0000;
+}
+
+.encounter-card .encounter-header .encounter-stats .difficulty.deadly {
+  background: #8b0000;
+  color: white;
+  animation: pulse 2s infinite;
+}
+
+.encounter-card .encounter-header .encounter-stats .xp {
+  font-weight: bold;
+  color: #8b4513;
+  font-family: "Crimson Text", serif;
+}
+
+.encounter-card .initiative-tracker {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  background: rgba(244, 228, 188, 0.5);
+  border-radius: 8px;
+  padding: 20px;
+  margin: 20px 0;
+  border: 1px solid rgba(139, 69, 19, 0.2);
+}
+
+.encounter-card .initiative-tracker h3 {
+  color: #8b4513;
+  font-family: "MedievalSharp", cursive;
+  margin-bottom: 15px;
+}
+
+.encounter-card .initiative-tracker .initiative-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.encounter-card .initiative-tracker .initiative-list .initiative-entry {
+  background: white;
+  border: 1px solid rgba(139, 69, 19, 0.2);
+  border-radius: 6px;
+  padding: 10px;
+  margin: 5px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.encounter-card
+  .initiative-tracker
+  .initiative-list
+  .initiative-entry.current-turn {
+  background: rgba(255, 215, 0, 0.1);
+  border-color: #ffd700;
+  transform: scale(1.02);
+}
+
+.encounter-card
+  .initiative-tracker
+  .initiative-list
+  .initiative-entry
+  .initiative-roll {
+  background: #2c1810;
+  color: white;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  margin-right: 15px;
+  font-weight: bold;
+}
+
+.encounter-card .monster-card {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+  background: white;
+  border: 1px solid rgba(139, 69, 19, 0.2);
+  border-radius: 8px;
+  padding: 20px;
+  margin: 15px 0;
+  transition: all 0.3s ease;
+}
+
+.encounter-card .monster-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.encounter-card .monster-card .monster-header {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.encounter-card .monster-card .monster-header h4 {
+  font-family: "MedievalSharp", cursive;
+  color: #2c1810;
+}
+
+.encounter-card .monster-card .monster-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.encounter-card .monster-card .monster-stats .stat-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.encounter-card .monster-card .monster-stats .stat-group label {
+  color: #8b4513;
+  font-family: "Crimson Text", serif;
+  font-weight: bold;
+}
+
+.encounter-card .monster-card .monster-stats .stat-group input,
+.encounter-card .monster-card .monster-stats .stat-group select {
+  padding: 0.5rem;
+  border: 1px solid rgba(139, 69, 19, 0.3);
+  border-radius: 4px;
+  background: white;
+  font-family: "Crimson Text", serif;
+  width: 100%;
+  max-width: 200px;
+}
+
+.encounter-card .monster-card .monster-stats .condition-select {
+  padding: 0.5rem;
+  border: 1px solid rgba(139, 69, 19, 0.3);
+  border-radius: 4px;
+  background: white;
+  font-family: "Crimson Text", serif;
+  width: 150px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.encounter-card .monster-card .monster-stats .condition-select:focus {
+  outline: none;
+  border-color: #ffd700;
+  box-shadow: 0 0 5px rgba(255, 215, 0, 0.3);
+}
+
+.encounter-card .monster-card .monster-stats .condition-select.has-condition {
+  background-color: rgba(139, 0, 0, 0.1);
+  border-color: rgba(139, 0, 0, 0.3);
+  color: #8b0000;
+  font-weight: bold;
+}
+
+.encounter-card .monster-conditions,
+.encounter-card .conditions-list,
+.encounter-card .condition-tag {
+  display: none;
+}
+
+.add-monster-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  background: rgba(244, 228, 188, 0.5);
+  border-radius: 8px;
+  padding: 20px;
+  margin-top: 25px;
+  border: 1px solid rgba(139, 69, 19, 0.2);
+}
+
+.add-monster-form h4 {
+  font-family: "MedievalSharp", cursive;
+  color: #8b4513;
+  margin-bottom: 15px;
+}
+
+.add-monster-form .form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.add-monster-form input {
+  padding: 0.5rem;
+  border: 1px solid rgba(139, 69, 19, 0.3);
+  border-radius: 4px;
+  background: white;
+  font-family: "Crimson Text", serif;
+  width: 100%;
+  max-width: 200px;
+}
+
+.encounter-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: flex-start;
+}
+
+.encounter-actions button {
+  width: 100%;
+  max-width: 200px;
+}
+
+.initiative-tracker {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.initiative-tracker button {
+  width: 100%;
+  max-width: 200px;
+}
+
+.initiative-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.initiative-entry {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1rem;
+  background: white;
+  border: 1px solid rgba(139, 69, 19, 0.2);
+  border-radius: 4px;
+}
+
+.initiative-roll {
+  font-weight: bold;
+  color: #8b4513;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.btn {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-family: "Crimson Text", serif;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  text-transform: uppercase;
+  font-size: 0.9em;
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn.btn-primary {
+  background: #8b4513;
+  color: white;
+}
+
+.btn.btn-primary:hover {
+  background: #5e2f0d;
+  transform: translateY(-2px);
+}
+
+.btn.btn-success {
+  background: #228b22;
+  color: white;
+}
+
+.btn.btn-success:hover {
+  background: #186218;
+  transform: translateY(-2px);
+}
+
+.btn.btn-danger {
+  background: #8b0000;
+  color: white;
+}
+
+.btn.btn-danger:hover {
+  background: #580000;
+  transform: translateY(-2px);
+}
+
+.btn.btn-info {
+  background: #663399;
+  color: white;
+}
+
+.btn.btn-info:hover {
+  background: #4d2673;
+  transform: translateY(-2px);
+}
+
+.btn.btn-sm {
+  padding: 6px 12px;
+  font-size: 0.8em;
+}
+
+@media (max-width: 768px) {
+  .encounters-section {
+    padding: 1rem;
+  }
+
+  .encounters-header {
+    flex-direction: column;
+    gap: 1rem;
+    text-align: center;
+  }
+
+  .encounters-list {
+    padding: 1rem;
+  }
+
+  .encounter-creation {
+    padding: 1rem;
+  }
+}

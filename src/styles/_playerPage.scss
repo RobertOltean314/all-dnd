@@ -1,0 +1,104 @@
+// main.scss
+
+@import 'variables';
+@import 'campaignPage';
+@import 'dungeonMasterPage';
+@import 'createNewCampaign';
+@import 'playerPage';
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    cursor: none;
+}
+
+#bigCursor {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background: #f2d4b2;
+    border-radius: 50%;
+    border: 1px solid black;
+    top: var(--y, 0);
+    left: var(--x, 0);
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    mix-blend-mode: difference;
+    transition: transform 0.2s;
+    scroll-behavior: smooth;
+    pointer-events: none;
+  }
+
+#homepage {
+    background-image: linear-gradient($primary-bg, $primary-bg), url('../images/homepage-tavern.gif');
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100%;
+    
+}
+
+#homepage__header {
+    display: flex;
+    margin: -50px 0 50px 0;
+    color: $text-color;
+    background-color: $navbar-bg;
+    width: 500px;
+    height: 50px;
+    border-radius: 5px;
+    justify-content: center;
+    align-items: center;
+
+}
+
+#homepage__body{
+    display: flex;
+    background-color: $accent-color;
+    width: 500px;
+    height: 200px;
+    border-radius: 5px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#homepage__body__header{
+    color: $button-bg;
+    align-items: center;
+    padding: 20px;
+    
+}
+
+#homepage__buttons{
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    gap: 20px;
+}
+
+button {
+    background-color: $button-bg; 
+    color: $text-color; 
+    padding: 10px 20px;
+    margin: 5px;
+    border: none;
+    border-radius: 5px;
+    font-size: $btn-font-size;
+    transition: background-color 0.3s;
+
+    &:hover {
+        background-color: $button-hover-color;
+        transform: translateY(-4px); // Moves the button 2px up
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); // Adds a shadow underneath
+    }
+
+    &:active {
+        background-color: $button-active-color; 
+        transform: translateY(0); // Reset position to avoid overlap of hover and active
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); // Slightly reduce shadow when active
+    }
+}
